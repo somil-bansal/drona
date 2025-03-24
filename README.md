@@ -1,9 +1,5 @@
 # 🦜🤖 Drona
 
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-
-[English](./README.md)
-
 ## Demo
 
 **Task**: Calculate the influence index of DeepSeek R1 on HuggingFace. This index can be designed using a weighted sum of factors such as followers, downloads, and likes.
@@ -23,7 +19,6 @@
 - [Project Statement](#project-statement)
 - [Architecture](#architecture)
 - [Features](#features)
-- [Why Drona?](#why-drona)
 - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -32,46 +27,21 @@
 - [Docker](#docker)
 - [Web UI](#web-ui)
 - [Development](#development)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/somilbansal/drona.git
 cd drona
 
-# Install dependencies, uv will take care of the python interpreter and venv creation
 uv sync
 
-# Playwright install to use Chromium for browser-use by default
 uv run playwright install
 
-# Configure environment
-# Windows: copy .env.example .env
 cp .env.example .env
-# Edit .env with your API keys
 
-# Run the project
 uv run main.py
 ```
-
-## Project Statement
-
-This is an academically driven open-source project, developed by a group of former colleagues in our spare time. It aims to explore and exchange ideas in the fields of Multi-Agent and DeepResearch.
-
-- **Purpose**: The primary purpose of this project is academic research, participation in the GAIA leaderboard, and the future publication of related papers.
-- **Independence Statement**: This project is entirely independent and unrelated to our primary job responsibilities. It does not represent the views or positions of our employers or any organizations.
-- **No Association**: This project has no association with Manus (whether it refers to a company, organization, or any other entity).
-- **Clarification Statement**: We have not promoted this project on any social media platforms. Any inaccurate reports related to this project are not aligned with its academic spirit.
-- **Contribution Management**: Issues and PRs will be addressed during our free time and may experience delays. We appreciate your understanding.
-- **Disclaimer**: This project is open-sourced under the MIT License. Users assume all risks associated with its use. We disclaim any responsibility for any direct or indirect consequences arising from the use of this project.
-## Architecture
-
-Drona implements a hierarchical multi-agent system where a supervisor coordinates specialized agents to accomplish complex tasks:
 
 ![Drona Architecture](./assets/architecture.png)
 
@@ -116,18 +86,6 @@ The system consists of the following agents working together:
     - Multi-agent orchestration
     - Task delegation and monitoring
 
-## Why Drona?
-
-We believe in the power of open source collaboration. This project wouldn't be possible without the amazing work of projects like:
-
-- [Qwen](https://github.com/QwenLM/Qwen) for their open source LLMs
-- [Tavily](https://tavily.com/) for search capabilities
-- [Jina](https://jina.ai/) for crawl search technology
-- [Browser-use](https://pypi.org/project/browser-use/) for control browser
-- And many other open source contributors
-
-We're committed to giving back to the community and welcome contributions of all kinds - whether it's code, documentation, bug reports, or feature suggestions.
-
 ## Setup
 
 ### Prerequisites
@@ -135,9 +93,6 @@ We're committed to giving back to the community and welcome contributions of all
 - [uv](https://github.com/astral-sh/uv) package manager
 
 ### Installation
-
-Drona leverages [uv](https://github.com/astral-sh/uv) as its package manager to streamline dependency management.
-Follow the steps below to set up a virtual environment and install the necessary dependencies:
 
 ```bash
 # Step 1: Create and activate a virtual environment through uv
@@ -149,9 +104,6 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 # Step 2: Install project dependencies
 uv sync
 ```
-
-By completing these steps, you'll ensure your environment is properly configured and ready for development.
-
 ### Configuration
 
 Drona uses a three-layer LLM system, which are respectively used for reasoning, basic tasks, and vision-language tasks. Configuration is done using the `conf.yaml` file in the root directory of the project. You can copy `conf.yaml.example` to `conf.yaml` to start the configuration:

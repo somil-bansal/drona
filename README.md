@@ -1,21 +1,14 @@
-# 🦜🤖 LangManus
+# 🦜🤖 Drona
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![WeChat](https://img.shields.io/badge/WeChat-Langmanus-brightgreen?logo=wechat&logoColor=white)](./assets/wechat_community.jpg)
-[![Discord Follow](https://dcbadge.vercel.app/api/server/m3MszDcn?style=flat)](https://discord.gg/m3MszDcn)
 
-[English](./README.md) | [简体中文](./README_zh.md) | [日本語](./README_ja.md)
-
-> Come From Open Source, Back to Open Source
-
-LangManus is a community-driven AI automation framework that builds upon the incredible work of the open source community. Our goal is to combine language models with specialized tools for tasks like web search, crawling, and Python code execution, while giving back to the community that made this possible.
+[English](./README.md)
 
 ## Demo
 
 **Task**: Calculate the influence index of DeepSeek R1 on HuggingFace. This index can be designed using a weighted sum of factors such as followers, downloads, and likes.
 
-**LangManus's Fully Automated Plan and Solution**:
+**Drona's Fully Automated Plan and Solution**:
 1. Gather the latest information about "DeepSeek R1", "HuggingFace", and related topics through online searches.
 2. Interact with a Chromium instance to visit the HuggingFace official website, search for "DeepSeek R1" and retrieve the latest data, including followers, likes, downloads, and other relevant metrics.
 3. Find formulas for calculating model influence using search engines and web scraping.
@@ -24,15 +17,13 @@ LangManus is a community-driven AI automation framework that builds upon the inc
 
 ![Demo](./assets/demo.gif)
 
-- [View on YouTube](https://youtu.be/sZCHqrQBUGk)
-
 ## Table of Contents
 
 - [Quick Start](#quick-start)
 - [Project Statement](#project-statement)
 - [Architecture](#architecture)
 - [Features](#features)
-- [Why LangManus?](#why-langmanus)
+- [Why Drona?](#why-drona)
 - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -50,8 +41,8 @@ LangManus is a community-driven AI automation framework that builds upon the inc
 
 ```bash
 # Clone the repository
-git clone https://github.com/langmanus/langmanus.git
-cd langmanus
+git clone https://github.com/somilbansal/drona.git
+cd drona
 
 # Install dependencies, uv will take care of the python interpreter and venv creation
 uv sync
@@ -78,23 +69,11 @@ This is an academically driven open-source project, developed by a group of form
 - **Clarification Statement**: We have not promoted this project on any social media platforms. Any inaccurate reports related to this project are not aligned with its academic spirit.
 - **Contribution Management**: Issues and PRs will be addressed during our free time and may experience delays. We appreciate your understanding.
 - **Disclaimer**: This project is open-sourced under the MIT License. Users assume all risks associated with its use. We disclaim any responsibility for any direct or indirect consequences arising from the use of this project.
-
-## 项目声明
-
-本项目是一个学术驱动的开源项目，由一群前同事在业余时间开发，旨在探索和交流 Multi-Agent 和 DeepResearch 相关领域的技术。
-
-- **项目目的**：本项目的主要目的是学术研究、参与 GAIA 排行榜，并计划在未来发表相关论文。
-- **独立性声明**：本项目完全独立，与我们的本职工作无关，不代表我们所在公司或任何组织的立场或观点。
-- **无关联声明**：本项目与 Manus（无论是公司、组织还是其他实体）无任何关联。
-- **澄清声明**：我们未在任何社交媒体平台上宣传过本项目，任何与本项目相关的不实报道均与本项目的学术精神无关。
-- **贡献管理**：Issue 和 PR 将在我们空闲时间处理，可能存在延迟，敬请谅解。
-- **免责声明**：本项目基于 MIT 协议开源，使用者需自行承担使用风险。我们对因使用本项目产生的任何直接或间接后果不承担责任。
-
 ## Architecture
 
-LangManus implements a hierarchical multi-agent system where a supervisor coordinates specialized agents to accomplish complex tasks:
+Drona implements a hierarchical multi-agent system where a supervisor coordinates specialized agents to accomplish complex tasks:
 
-![LangManus Architecture](./assets/architecture.png)
+![Drona Architecture](./assets/architecture.png)
 
 The system consists of the following agents working together:
 
@@ -137,7 +116,7 @@ The system consists of the following agents working together:
     - Multi-agent orchestration
     - Task delegation and monitoring
 
-## Why LangManus?
+## Why Drona?
 
 We believe in the power of open source collaboration. This project wouldn't be possible without the amazing work of projects like:
 
@@ -157,7 +136,7 @@ We're committed to giving back to the community and welcome contributions of all
 
 ### Installation
 
-LangManus leverages [uv](https://github.com/astral-sh/uv) as its package manager to streamline dependency management.
+Drona leverages [uv](https://github.com/astral-sh/uv) as its package manager to streamline dependency management.
 Follow the steps below to set up a virtual environment and install the necessary dependencies:
 
 ```bash
@@ -175,7 +154,7 @@ By completing these steps, you'll ensure your environment is properly configured
 
 ### Configuration
 
-LangManus uses a three-layer LLM system, which are respectively used for reasoning, basic tasks, and vision-language tasks. Configuration is done using the `conf.yaml` file in the root directory of the project. You can copy `conf.yaml.example` to `conf.yaml` to start the configuration:
+Drona uses a three-layer LLM system, which are respectively used for reasoning, basic tasks, and vision-language tasks. Configuration is done using the `conf.yaml` file in the root directory of the project. You can copy `conf.yaml.example` to `conf.yaml` to start the configuration:
 ```bash
 cp conf.yaml.example conf.yaml
 ```
@@ -234,7 +213,7 @@ CHROME_PROXY_PASSWORD=  # Optional, the default is None
 
 ### Configure Pre-commit Hook
 
-LangManus includes a pre-commit hook that runs linting and formatting checks before each commit. To set it up:
+Drona includes a pre-commit hook that runs linting and formatting checks before each commit. To set it up:
 
 1. Make the pre-commit script executable:
 
@@ -259,7 +238,7 @@ The pre-commit hook will automatically:
 
 ### Basic Execution
 
-To run LangManus with default settings:
+To run Drona with default settings:
 
 ```bash
 uv run main.py
@@ -267,7 +246,7 @@ uv run main.py
 
 ### API Server
 
-LangManus provides a FastAPI-based API server with streaming support:
+Drona provides a FastAPI-based API server with streaming support:
 
 ```bash
 # Start the API server
@@ -291,7 +270,7 @@ The API server exposes the following endpoints:
 
 ### Advanced Configuration
 
-LangManus can be customized through various configuration files in the `src/config` directory:
+Drona can be customized through various configuration files in the `src/config` directory:
 
 - `env.py`: Configure LLM models, API keys, and base URLs
 - `tools.py`: Adjust tool-specific settings (e.g., Tavily search results limit)
@@ -299,7 +278,7 @@ LangManus can be customized through various configuration files in the `src/conf
 
 ### Agent Prompts System
 
-LangManus uses a sophisticated prompting system in the `src/prompts` directory to define agent behaviors and responsibilities:
+Drona uses a sophisticated prompting system in the `src/prompts` directory to define agent behaviors and responsibilities:
 
 #### Core Agent Roles
 
@@ -332,31 +311,31 @@ Each agent's prompt is defined in a separate markdown file, making it easy to mo
 
 ## Docker
 
-LangManus can be run in a Docker container. default serve api on port 8000.
+Drona can be run in a Docker container. default serve api on port 8000.
 
 Before run docker, you need to prepare environment variables in `.env` file.
 
 ```bash
-docker build -t langmanus .
-docker run --name langmanus -d --env-file .env -e CHROME_HEADLESS=True -p 8000:8000 langmanus
+docker build -t drona .
+docker run --name drona -d --env-file .env -e CHROME_HEADLESS=True -p 8000:8000 drona
 ```
 
 You can also just run the cli with docker.
 
 ```bash
-docker build -t langmanus .
-docker run --rm -it --env-file .env -e CHROME_HEADLESS=True langmanus uv run python main.py
+docker build -t drona .
+docker run --rm -it --env-file .env -e CHROME_HEADLESS=True drona uv run python main.py
 ```
 
 ## Web UI
 
-LangManus provides a default web UI.
+Drona provides a default web UI.
 
-Please refer to the [langmanus/langmanus-web-ui](https://github.com/langmanus/langmanus-web) project for more details.
+Please refer to the [drona/drona-web-ui](https://github.com/drona/drona-web) project for more details.
 
 ## Docker Compose (include both backend and frontend)
 
-LangManus provides a docker-compose setup to easily run both the backend and frontend together:
+Drona provides a docker-compose setup to easily run both the backend and frontend together:
 
 ```bash
 # Start both backend and frontend
@@ -367,8 +346,8 @@ docker-compose up -d
 ```
 
 This will:
-1. Build and start the LangManus backend container
-2. Build and start the LangManus web UI container
+1. Build and start the Drona backend container
+2. Build and start the Drona web UI container
 3. Connect them using a shared network
 
 ** Make sure you have your `.env` file prepared with the necessary API keys before starting the services. **
@@ -399,30 +378,3 @@ make lint
 # Format code
 make format
 ```
-
-## FAQ
-
-Please refer to the [FAQ.md](docs/FAQ.md) for more details.
-
-## Contributing
-
-We welcome contributions of all kinds! Whether you're fixing a typo, improving documentation, or adding a new feature, your help is appreciated. Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to get started.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=langmanus/langmanus&type=Date)](https://www.star-history.com/#langmanus/langmanus&Date)
-
-## Acknowledgments
-
-Special thanks to all the open source projects and contributors that make LangManus possible. We stand on the shoulders of giants.
-
-In particular, we want to express our deep appreciation for:
-- [LangChain](https://github.com/langchain-ai/langchain) for their exceptional framework that powers our LLM interactions and chains
-- [LangGraph](https://github.com/langchain-ai/langgraph) for enabling our sophisticated multi-agent orchestration
-- [Browser-use](https://pypi.org/project/browser-use/) for control browser
-
-These amazing projects form the foundation of LangManus and demonstrate the power of open source collaboration.

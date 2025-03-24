@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-- [Which models does LangManus support?](#which-models-does-langmanus-support)
+- [Which models does Drona support?](#which-models-does-drona-support)
 - [How to deploy the Web UI frontend project?](#how-to-deploy-the-web-ui-frontend-project)
 - [Can I use my local Chrome browser as the Browser Tool?](#can-i-use-my-local-chrome-browser-as-the-browser-tool)
 
-## Which models does LangManus support?
+## Which models does Drona support?
 
-In LangManus, we categorize models into three types:
+In Drona, we categorize models into three types:
 
 ### 1. **Chat Model**
 - **Usage**: For conversation scenarios, mainly called in **Supervisor** and **Agent**.
@@ -23,13 +23,13 @@ In LangManus, we categorize models into three types:
 - **Supported Models**: `gpt-4o`, `qwen2.5-vl-72b-instruct`, `gemini-2.0-flash`.
 
 ### How to switch models?
-You can switch the model in use by modifying the `conf.yaml` file in the root directory of the project, using the configuration in the litellm format. For the specific configuration method, please refer to [README.md](https://github.com/langmanus/langmanus/blob/main/README.md).
+You can switch the model in use by modifying the `conf.yaml` file in the root directory of the project, using the configuration in the litellm format. For the specific configuration method, please refer to [README.md](https://github.com/drona/drona/blob/main/README.md).
 
 ---
 
 ### How to use Ollama models?
 
-LangManus supports the integration of Ollama models. You can refer to [litellm Ollama](https://docs.litellm.ai/docs/providers/ollama). <br>
+Drona supports the integration of Ollama models. You can refer to [litellm Ollama](https://docs.litellm.ai/docs/providers/ollama). <br>
 The following is a configuration example of `conf.yaml` for using Ollama models:
 
 ```yaml
@@ -40,7 +40,7 @@ REASONING_MODEL:
 
 ### How to use OpenRouter models?
 
-LangManus supports the integration of OpenRouter models. You can refer to [litellm OpenRouter](https://docs.litellm.ai/docs/providers/openrouter). To use OpenRouter models, you need to:
+Drona supports the integration of OpenRouter models. You can refer to [litellm OpenRouter](https://docs.litellm.ai/docs/providers/openrouter). To use OpenRouter models, you need to:
 1. Obtain the OPENROUTER_API_KEY from OpenRouter (https://openrouter.ai/) and set it in the environment variable.
 2. Add the `openrouter/` prefix before the model name.
 3. Configure the correct OpenRouter base URL.
@@ -60,7 +60,7 @@ Note: The available models and their exact names may change over time. Please ve
 
 ### How to use Google Gemini models?
 
-LangManus supports the integration of Google's Gemini models. You can refer to [litellm Gemini](https://docs.litellm.ai/docs/providers/gemini). To use Gemini models, please follow these steps:
+Drona supports the integration of Google's Gemini models. You can refer to [litellm Gemini](https://docs.litellm.ai/docs/providers/gemini). To use Gemini models, please follow these steps:
 
 1. Obtain the Gemini API key from Google AI Studio (https://makersuite.google.com/app/apikey).
 2. Configure the Gemini API key in the environment variable (such as the `.env` file)
@@ -75,12 +75,12 @@ REASONING_MODEL:
 
 Notes:
 - Replace `YOUR_GEMINI_KEY` with your actual Gemini API key.
-- The base URL is specifically configured to use Gemini through LangManus' OpenAI-compatible interface.
+- The base URL is specifically configured to use Gemini through Drona' OpenAI-compatible interface.
 - The available models include `gemini-2.0-flash` for chat and visual tasks.
 
 ### How to use Azure models?
 
-LangManus supports the integration of Azure models. You can refer to [litellm Azure](https://docs.litellm.ai/docs/providers/azure). Configuration example of `conf.yaml`:
+Drona supports the integration of Azure models. You can refer to [litellm Azure](https://docs.litellm.ai/docs/providers/azure). Configuration example of `conf.yaml`:
 ```yaml
 REASONING_MODEL:
   model: "azure/gpt-4o-2024-08-06"
@@ -91,28 +91,28 @@ REASONING_MODEL:
 
 ## How to deploy the Web UI frontend project?
 
-LangManus provides an out-of-the-box Web UI frontend project. You can complete the deployment through the following steps. Please visit the [LangManus Web UI GitHub repository](https://github.com/langmanus/langmanus-web) for more information.
+Drona provides an out-of-the-box Web UI frontend project. You can complete the deployment through the following steps. Please visit the [Drona Web UI GitHub repository](https://github.com/drona/drona-web) for more information.
 
-### Step 1: Start the LangManus backend service
+### Step 1: Start the Drona backend service
 
-First, ensure you have cloned and installed the LangManus backend project. Enter the backend project directory and start the service:
+First, ensure you have cloned and installed the Drona backend project. Enter the backend project directory and start the service:
 
 ```bash
-cd langmanus
+cd drona
 make serve
 ```
 
-By default, the LangManus backend service will run on `http://localhost:8000`.
+By default, the Drona backend service will run on `http://localhost:8000`.
 
 ---
 
 ### Step 2: Install the Web UI frontend project and its dependencies
 
-Next, clone the LangManus Web UI frontend project and install dependencies:
+Next, clone the Drona Web UI frontend project and install dependencies:
 
 ```bash
-git clone https://github.com/langmanus/langmanus-web.git
-cd langmanus-web
+git clone https://github.com/drona/drona-web.git
+cd drona-web
 pnpm install
 ```
 
@@ -131,13 +131,13 @@ After completing the dependency installation, start the Web UI development serve
 pnpm dev
 ```
 
-By default, the LangManus Web UI service will run on `http://localhost:3000`.
+By default, the Drona Web UI service will run on `http://localhost:3000`.
 
 ---
 
 ## Browser Tool not starting properly?
 
-LangManus uses [`browser-use`](https://github.com/browser-use/browser-use) to implement browser-related functionality, and `browser-use` is built on [`Playwright`](https://playwright.dev/python). Therefore, you need to install Playwright's browser instance before first use.
+Drona uses [`browser-use`](https://github.com/browser-use/browser-use) to implement browser-related functionality, and `browser-use` is built on [`Playwright`](https://playwright.dev/python). Therefore, you need to install Playwright's browser instance before first use.
 
 ```bash
 uv run playwright install
@@ -147,7 +147,7 @@ uv run playwright install
 
 ## Can I use my local Chrome browser as the Browser Tool?
 
-Yes. LangManus uses [`browser-use`](https://github.com/browser-use/browser-use) to implement browser-related functionality, and `browser-use` is based on [`Playwright`](https://playwright.dev/python). By configuring the `CHROME_INSTANCE_PATH` in the `.env` file, you can specify the path to your local Chrome browser to use the local browser instance.
+Yes. Drona uses [`browser-use`](https://github.com/browser-use/browser-use) to implement browser-related functionality, and `browser-use` is based on [`Playwright`](https://playwright.dev/python). By configuring the `CHROME_INSTANCE_PATH` in the `.env` file, you can specify the path to your local Chrome browser to use the local browser instance.
 
 ### Configuration Steps
 
@@ -164,8 +164,8 @@ Yes. LangManus uses [`browser-use`](https://github.com/browser-use/browser-use) 
    - Windows: `C:\Program Files\Google\Chrome\Application\chrome.exe`
    - Linux: `/usr/bin/google-chrome`
 
-3. **Start LangManus**
-   After starting LangManus, `browser-use` will use your specified local Chrome browser instance.
+3. **Start Drona**
+   After starting Drona, `browser-use` will use your specified local Chrome browser instance.
 
-4. **Access LangManus Web UI**
-   Since now your local Chrome browser is being controlled by `browser-use`, you need to use another browser (such as Safari, Mozilla Firefox) to access LangManus's Web interface, which is typically at `http://localhost:3000`. Alternatively, you can access the LangManus Web UI from another device.
+4. **Access Drona Web UI**
+   Since now your local Chrome browser is being controlled by `browser-use`, you need to use another browser (such as Safari, Mozilla Firefox) to access Drona's Web interface, which is typically at `http://localhost:3000`. Alternatively, you can access the Drona Web UI from another device.

@@ -1,0 +1,22 @@
+# if true, use conf.yaml, else use original .env config, default false
+USE_CONF: true
+
+# LLM Config
+## follow litellm config: https://docs.litellm.ai/docs/providers
+REASONING_MODEL:
+  model: "azure/tfg-gpt4o"
+  api_base: 'https://tfgam-aze-eus-openai.openai.azure.com'
+  api_key: 'fad496d248804765991834c0933b8f26'
+  api_version: '2024-02-15-preview'
+
+BASIC_MODEL:
+  model: "azure/o3-mini"
+  api_base: 'https://sbans-m6soohn7-eastus2.openai.azure.com/'
+  api_key: 'DcwQnkouy21uS7CjeWrhp3l5zR4ndm9q93mARZrfhw0qskau3XPXJQQJ99BBACHYHv6XJ3w3AAAAACOGRdSf'
+  api_version: '2024-12-01-preview'
+
+VISION_MODEL:
+  model: "azure/tfg-gpt4o"
+  api_base: 'https://tfgam-aze-eus-openai.openai.azure.com'
+  api_key: 'fad496d248804765991834c0933b8f26'
+  api_version: '2024-02-15-preview'

@@ -12,4 +12,5 @@ __all__ = [
     "python_repl_tool",
     "write_file_tool",
     "browser_tool",
+    "vector_search_tool",
 ]

@@ -30,7 +30,6 @@ def research_node(state: State) -> Command[Literal["supervisor"]]:
     result = research_agent.invoke(state)
     logger.info("Research agent completed task")
     response_content = result["messages"][-1].content
-    # 尝试修复可能的JSON输出
     response_content = repair_json_output(response_content)
     logger.debug(f"Research agent response: {response_content}")
     return Command(
@@ -52,7 +51,6 @@ def code_node(state: State) -> Command[Literal["supervisor"]]:
     result = coder_agent.invoke(state)
     logger.info("Code agent completed task")
     response_content = result["messages"][-1].content
-    # 尝试修复可能的JSON输出
     response_content = repair_json_output(response_content)
     logger.debug(f"Code agent response: {response_content}")
     return Command(
@@ -74,7 +72,6 @@ def browser_node(state: State) -> Command[Literal["supervisor"]]:
     result = browser_agent.invoke(state)
     logger.info("Browser agent completed task")
     response_content = result["messages"][-1].content
-    # 尝试修复可能的JSON输出
     response_content = repair_json_output(response_content)
     logger.debug(f"Browser agent response: {response_content}")
     return Command(
@@ -173,7 +170,6 @@ def coordinator_node(state: State) -> Command[Literal["planner", "__end__"]]:
     response = get_llm_by_type(AGENT_LLM_MAP["coordinator"]).invoke(messages)
     logger.debug(f"Current state messages: {state['messages']}")
     response_content = response.content
-    # 尝试修复可能的JSON输出
     response_content = repair_json_output(response_content)
     logger.debug(f"Coordinator response: {response_content}")
 
@@ -181,7 +177,6 @@ def coordinator_node(state: State) -> Command[Literal["planner", "__end__"]]:
     if "handoff_to_planner" in response_content:
         goto = "planner"
 
-    # 更新response.content为修复后的内容
     response.content = response_content
 
     return Command(
@@ -196,7 +191,6 @@ def reporter_node(state: State) -> Command[Literal["supervisor"]]:
     response = get_llm_by_type(AGENT_LLM_MAP["reporter"]).invoke(messages)
     logger.debug(f"Current state messages: {state['messages']}")
     response_content = response.content
-    # 尝试修复可能的JSON输出
     response_content = repair_json_output(response_content)
     logger.debug(f"reporter response: {response_content}")
 

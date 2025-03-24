@@ -1,12 +1,10 @@
-from google.protobuf.any import is_type
-from langchain_openai import ChatOpenAI, AzureChatOpenAI
-from langchain_deepseek import ChatDeepSeek
-from src.llms.litellm_v2 import ChatLiteLLMV2 as ChatLiteLLM
-from src.config import load_yaml_config
-from typing import Optional
-from litellm import LlmProviders
 from pathlib import Path
 from typing import Dict, Any
+from typing import Optional
+
+from langchain_deepseek import ChatDeepSeek
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
+from litellm import LlmProviders
 
 from src.config import (
     REASONING_MODEL,
@@ -25,15 +23,17 @@ from src.config import (
     VL_AZURE_DEPLOYMENT,
     REASONING_AZURE_DEPLOYMENT,
 )
+from src.config import load_yaml_config
 from src.config.agents import LLMType
+from src.llms.litellm_v2 import ChatLiteLLMV2 as ChatLiteLLM
 
 
 def create_openai_llm(
-    model: str,
-    base_url: Optional[str] = None,
-    api_key: Optional[str] = None,
-    temperature: float = 0.0,
-    **kwargs,
+        model: str,
+        base_url: Optional[str] = None,
+        api_key: Optional[str] = None,
+        temperature: float = 0.0,
+        **kwargs,
 ) -> ChatOpenAI:
     """
     Create a ChatOpenAI instance with the specified configuration
@@ -50,34 +50,12 @@ def create_openai_llm(
     return ChatOpenAI(**llm_kwargs)
 
 
-def create_deepseek_llm(
-    model: str,
-    base_url: Optional[str] = None,
-    api_key: Optional[str] = None,
-    temperature: float = 0.0,
-    **kwargs,
-) -> ChatDeepSeek:
-    """
-    Create a ChatDeepSeek instance with the specified configuration
-    """
-    # Only include base_url in the arguments if it's not None or empty
-    llm_kwargs = {"model": model, "temperature": temperature, **kwargs}
-
-    if base_url:  # This will handle None or empty string
-        llm_kwargs["api_base"] = base_url
-
-    if api_key:  # This will handle None or empty string
-        llm_kwargs["api_key"] = api_key
-
-    return ChatDeepSeek(**llm_kwargs)
-
-
 def create_azure_llm(
-    azure_deployment: str,
-    azure_endpoint: str,
-    api_version: str,
-    api_key: str,
-    temperature: float = 0.0,
+        azure_deployment: str,
+        azure_endpoint: str,
+        api_version: str,
+        api_key: str,
+        temperature: float = 0.0,
 ) -> AzureChatOpenAI:
     """
     create azure llm instance with specified configuration
@@ -92,11 +70,11 @@ def create_azure_llm(
 
 
 def create_litellm_model(
-    model: str,
-    base_url: Optional[str] = None,
-    api_key: Optional[str] = None,
-    temperature: float = 0.0,
-    **kwargs,
+        model: str,
+        base_url: Optional[str] = None,
+        api_key: Optional[str] = None,
+        temperature: float = 0.0,
+        **kwargs,
 ) -> ChatLiteLLM:
     """
     Support various different model's through LiteLLM's capabilities.
@@ -130,14 +108,14 @@ def is_litellm_model(model_name: str) -> bool:
         bool: True if the model should be handled by LiteLLM, False otherwise
     """
     return (
-        model_name
-        and "/" in model_name
-        and model_name.split("/")[0] in [p.value for p in LlmProviders]
+            model_name
+            and "/" in model_name
+            and model_name.split("/")[0] in [p.value for p in LlmProviders]
     )
 
 
 def _create_llm_use_env(
-    llm_type: LLMType,
+        llm_type: LLMType,
 ) -> ChatOpenAI | ChatDeepSeek | AzureChatOpenAI | ChatLiteLLM:
     if llm_type == "reasoning":
         if REASONING_AZURE_DEPLOYMENT:
@@ -149,12 +127,6 @@ def _create_llm_use_env(
             )
         elif is_litellm_model(REASONING_MODEL):
             llm = create_litellm_model(
-                model=REASONING_MODEL,
-                base_url=REASONING_BASE_URL,
-                api_key=REASONING_API_KEY,
-            )
-        else:
-            llm = create_deepseek_llm(
                 model=REASONING_MODEL,
                 base_url=REASONING_BASE_URL,
                 api_key=REASONING_API_KEY,
@@ -220,7 +192,7 @@ def _create_llm_use_conf(llm_type: LLMType, conf: Dict[str, Any]) -> ChatLiteLLM
 
 
 def get_llm_by_type(
-    llm_type: LLMType,
+        llm_type: LLMType,
 ) -> ChatOpenAI | ChatDeepSeek | AzureChatOpenAI | ChatLiteLLM:
     """
     Get LLM instance by type. Returns cached instance if available.
@@ -245,7 +217,6 @@ def get_llm_by_type(
 reasoning_llm = get_llm_by_type("reasoning")
 basic_llm = get_llm_by_type("basic")
 vl_llm = get_llm_by_type("vision")
-
 
 if __name__ == "__main__":
     # stream = reasoning_llm.stream("what is mcp?")

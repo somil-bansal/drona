@@ -10,7 +10,7 @@ import json_repair
 from langchain_core.messages import HumanMessage
 from langgraph.types import Command
 
-from src.agents import research_agent, coder_agent, browser_agent
+from src.agents import research_agent, coder_agent, browser_agent, file_manager_agent
 from src.llms.llm import get_llm_by_type
 from src.config import TEAM_MEMBERS
 from src.config.agents import AGENT_LLM_MAP
@@ -59,6 +59,26 @@ def code_node(state: State) -> Command[Literal["supervisor"]]:
                 HumanMessage(
                     content=response_content,
                     name="coder",
+                )
+            ]
+        },
+        goto="supervisor",
+    )
+
+def file_node(state: State) -> Command[Literal["supervisor"]]:
+    """Node for the coder agent that executes Python code."""
+    logger.info("File agent starting task")
+    result = file_manager_agent.invoke(state)
+    logger.info("File agent completed task")
+    response_content = result["messages"][-1].content
+    response_content = repair_json_output(response_content)
+    logger.debug(f"Code agent response: {response_content}")
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(
+                    content=response_content,
+                    name="file",
                 )
             ]
         },

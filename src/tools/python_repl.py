@@ -2,7 +2,7 @@ import logging
 from typing import Annotated
 from langchain_core.tools import tool
 from langchain_experimental.utilities import PythonREPL
-from tools.decorators import log_io
+from src.tools.decorators import log_io
 
 # Initialize REPL and logger
 repl = PythonREPL()

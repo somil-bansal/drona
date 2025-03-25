@@ -4,7 +4,7 @@ from typing import Annotated
 from langchain_core.messages import HumanMessage
 from langchain_core.tools import tool
 
-from tools.decorators import log_io
+from src.tools.decorators import log_io
 
 logger = logging.getLogger(__name__)
 

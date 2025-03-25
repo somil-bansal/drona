@@ -52,6 +52,17 @@ TEAM_MEMBER_CONFIGRATIONS = {
         ),
         "is_optional": True,
     },
+    "file": {
+        "name": "file",
+        "desc": (
+            "Responsible for creating, updating and deleting files"
+        ),
+        "desc_for_llm": (
+            "Creates or updates files and outputs a Markdown file."
+            "Must be used for all file update operations."
+        ),
+        "is_optional": True,
+    },
     "browser": {
         "name": "browser",
         "desc": "Responsible for web browsing, content extraction and interaction",

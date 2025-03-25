@@ -7,12 +7,13 @@ from src.tools import (
     crawl_tool,
     python_repl_tool,
     tavily_tool,
-    vector_search_tool
+    vector_search_tool,
+    write_file_tool
 )
 
 from src.llms.llm import get_llm_by_type
 from src.config.agents import AGENT_LLM_MAP
-from tools import write_file_tool
+# from src.tools import write_file_tool
 
 
 # Create agents using configured LLM types
@@ -26,7 +27,7 @@ def create_agent(agent_type: str, tools: list, prompt_template: str):
 
 
 # Create agents using the factory function
-research_agent = create_agent("researcher", [tavily_tool, crawl_tool, vector_search_tool], "researcher")
+research_agent = create_agent("researcher", [tavily_tool, crawl_tool], "researcher")
 coder_agent = create_agent("coder", [python_repl_tool, bash_tool], "coder")
 browser_agent = create_agent("browser", [browser_tool], "browser")
-file_creator_agent = create_agent("file", [write_file_tool], "file_creator")
+file_manager_agent = create_agent("file", [write_file_tool], "file_manager")

@@ -1,7 +1,7 @@
 import logging
 from langchain_community.tools.tavily_search import TavilySearchResults
 from src.config import TAVILY_MAX_RESULTS
-from tools.decorators import create_logged_tool
+from src.tools.decorators import create_logged_tool
 
 logger = logging.getLogger(__name__)
 
